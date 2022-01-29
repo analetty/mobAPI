@@ -26,7 +26,7 @@ public class ControladorRestMOB {
 	
 	LogicaObjeto logica;
 	
-	@GetMapping("/objeto")
+	@GetMapping(value = "/objeto", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String obtenerObjeto() throws Exception {
 		logica = new LogicaObjeto();
 		return logica.consultarObjetos();
@@ -38,26 +38,26 @@ public class ControladorRestMOB {
 			 @RequestBody @Valid PeticionRestMOB datos) throws TransformerException, ParserConfigurationException, SAXException, IOException {
 		logica = new LogicaObjeto();
 		logica.crearObjeto(datos);
-		return "Welcome";
+		return "Crear";
 	}
 	
 	@DeleteMapping("/objeto")
 	public String eliminarObjeto() {
-		return "Welcome";
+		return "Eliminar";
 	}
 	
 	@PostMapping(value = "/replicar", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
 	public String replicar(
 			 @RequestBody @Valid PeticionRestMOB datos) {
-		return "Welcome";
+		return "Replicar";
 	}
 	
 	@PostMapping(value = "/restaurar", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
 	public String restaurar(
 			 @RequestBody @Valid PeticionRestMOB datos) {
-		return "Welcome";
+		return "Restaurar";
 	}
 	
 	
