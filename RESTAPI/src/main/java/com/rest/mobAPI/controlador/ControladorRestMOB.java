@@ -9,6 +9,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -40,7 +41,8 @@ public class ControladorRestMOB {
 		ModeloObjeto peticion = new ModeloObjeto();
 		peticion.setId(id);
 		logica = new LogicaObjeto();
-		return logica.consultarObjeto(peticion);
+		String objeto = logica.consultarObjeto(peticion);
+		return objeto;
 	}
 	
 	@PostMapping(value = "/objeto", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -48,17 +50,16 @@ public class ControladorRestMOB {
 	public String crearObjeto(
 			 @RequestBody @Valid PeticionRestMOB datos) throws TransformerException, ParserConfigurationException, SAXException, IOException {
 		logica = new LogicaObjeto();
-		logica.crearObjeto(datos);
-		return "Crear";
+		return logica.crearObjeto(datos);
 	}
 	
 	@DeleteMapping("/objeto/{id}")
-	public String eliminarObjeto(@PathVariable(name = "id") String id) throws Exception {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+	public void eliminarObjeto(@PathVariable(name = "id") String id) throws Exception {
 		ModeloObjeto peticion = new ModeloObjeto();
 		peticion.setId(id);
 		logica = new LogicaObjeto();
 		logica.eliminarObjeto(peticion);
-		return "Eliminar";
 	}
 	
 	@PostMapping(value = "/replicar", produces = MediaType.APPLICATION_JSON_VALUE)
