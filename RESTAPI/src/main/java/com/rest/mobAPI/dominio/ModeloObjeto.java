@@ -11,8 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ModeloObjeto {
 	
+	private String id;
 	private String nombre;
 	private String accion;
-	private Date fechaCreacion;
+	private String fechaCreacion;
 
 }
