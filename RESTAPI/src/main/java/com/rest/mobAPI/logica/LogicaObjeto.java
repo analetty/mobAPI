@@ -56,10 +56,8 @@ public class LogicaObjeto {
                     String accion =elem.getElementsByTagName("accion").item(0)
                             .getChildNodes().item(0).getNodeValue();
                     ModeloObjeto obj = new ModeloObjeto(id, nombre, accion, fechaCreacion);
-                    objetos.add(obj);
-            		
-            	}
-                
+                    objetos.add(obj);	
+            	} 
             }
         }
         if(objetos.size() > 0) {
@@ -94,8 +92,7 @@ public class LogicaObjeto {
                         .getChildNodes().item(0).getNodeValue();
                 ModeloObjeto objeto = new ModeloObjeto(id, nombre, accion, fechaCreacion);
                 objetos.add(objeto);
-                
-                
+ 
             }
         }
         
