@@ -11,7 +11,7 @@ For building and running the MobAPI application, you need:
 ## Running the application locally
 
 There are several ways to run a Spring Boot application on your local machine.
-One way is to execute the `main` method in the `src.main.java.com.api.hustle.admin.Application` class from your IDE.
+One way is to execute the `main` method in the `src.main.java.com.rest.mobAPI.MobApiApplication` class from your IDE.
 
 The Application use the port 8080
 
