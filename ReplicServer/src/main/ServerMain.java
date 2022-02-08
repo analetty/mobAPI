@@ -23,7 +23,7 @@ public class ServerMain {
     	ServerSocket servidor;
 		String msg;
 		String log;
-		int port = 9999;
+		int port = 19876;
 		
 		try {
 			
@@ -44,21 +44,23 @@ public class ServerMain {
 					try {
 						String response = ServerMethod.RestaurarObjetos();
 						out.writeUTF(response);
+						
 
 					} catch (Exception e) {
-						e.printStackTrace();
+						System.out.println(e);
 						out.writeUTF("ERROR");
 					}
 					
 				}else if(msg.equals("REPLICAR")){
 					String action = in.readUTF();
 					out.writeUTF(ReturnVote(action));
-					System.out.println("Servidor: Conexión exitosa, hola ");
+					System.out.println(action);
 					msg = in.readUTF();
 					
 					if(msg.equals("GLOBAL_COMMIT")) {
 						
 						msg = in.readUTF();
+						System.out.println(msg);
 						ServerMethod.ReplicarObjetos(msg);
 						
 					}	

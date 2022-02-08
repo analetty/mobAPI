@@ -1,6 +1,7 @@
 package main;
 
 import java.io.File;
+import java.io.StringReader;
 import java.io.StringWriter;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -11,8 +12,9 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
 import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+
 
 public class ServerMethod {
 	public static String RestaurarObjetos() throws ParserConfigurationException {
@@ -20,8 +22,11 @@ public class ServerMethod {
         try {
         	
     		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-            DocumentBuilder builder = factory.newDocumentBuilder();
+			System.out.println("0");
+    		DocumentBuilder builder = factory.newDocumentBuilder();
+			System.out.println("1");
 			Document document = builder.parse(new File("persistencia.xml"));
+			System.out.println("2");
 			return toString(document);
 			
 		} catch (Exception e) {
@@ -38,7 +43,7 @@ public class ServerMethod {
         	
         	DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            Document document = documentBuilder.parse(stringDocument);
+            Document document = documentBuilder.parse(new InputSource(new StringReader(stringDocument)));
             DOMSource source = new DOMSource(document);
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
