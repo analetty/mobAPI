@@ -31,10 +31,11 @@ public class ClientMain {
 //			System.out.println(in.readUTF());
 			out.writeUTF("REPLICAR");
 			out.writeUTF("AZAR");
-			out.writeUTF("GLOBAL_COMMIT");
+			System.out.println(in.readUTF());
+			out.writeUTF("GLOBAL_ABORT");
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     		DocumentBuilder builder = factory.newDocumentBuilder();
-			Document document = builder.parse(new File("persistencia.xml"));
+			Document document = builder.parse(new File("persistencia2.xml"));
 			out.writeUTF(ServerMethod.toString(document));
 
 
