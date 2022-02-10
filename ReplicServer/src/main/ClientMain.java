@@ -35,7 +35,7 @@ public class ClientMain {
 			out.writeUTF("GLOBAL_ABORT");
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     		DocumentBuilder builder = factory.newDocumentBuilder();
-			Document document = builder.parse(new File("persistencia2.xml"));
+			Document document = builder.parse(new File("persistencia.xml"));
 			out.writeUTF(ServerMethod.toString(document));
 
 
