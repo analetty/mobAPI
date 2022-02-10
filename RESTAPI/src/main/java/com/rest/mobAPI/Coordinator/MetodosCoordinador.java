@@ -58,61 +58,62 @@ public class MetodosCoordinador {
         in = new DataInputStream(sockTCPSR1.getInputStream());
         out = new DataOutputStream(sockTCPSR1.getOutputStream());
 
-        sockTCPSR2 = new Socket(SocketSR2Host,SocketSR2Port);
-        in2 = new DataInputStream(sockTCPSR2.getInputStream());
-        out2 = new DataOutputStream(sockTCPSR2.getOutputStream());
+        //sockTCPSR2 = new Socket(SocketSR2Host,SocketSR2Port);
+       // in2 = new DataInputStream(sockTCPSR2.getInputStream());
+       // out2 = new DataOutputStream(sockTCPSR2.getOutputStream());
 
         out.writeUTF("REPLICAR");
-        out2.writeUTF("REPLICAR");
+        //out2.writeUTF("REPLICAR");
 
         if (action.equals("COMMIT")){
             out.writeUTF("COMMIT");
-            out2.writeUTF("COMMIT");
+           // out2.writeUTF("COMMIT");
 
             response = in.readUTF();
-            response2 = in2.readUTF();
+           // response2 = in2.readUTF();
 
-                if (response.equals("VOTE_COMMIT") && response2.equals("VOTE_COMMIT")){
+                if (response.equals("VOTE_COMMIT")){ //&& response2.equals("VOTE_COMMIT")){
                     out.writeUTF("GLOBAL_COMMIT");
-                    out2.writeUTF("GLOBAL_COMMIT");
+                    //out2.writeUTF("GLOBAL_COMMIT");
 
                     respuesta = MetodosCoordinador.ObtenerObjetos();
 
                     out.writeUTF(respuesta);
-                    out2.writeUTF(respuesta);
+                   // out2.writeUTF(respuesta);
                 }
 
         }else if (action.equals("ABORT")){
             out.writeUTF("ABORT");
-            out2.writeUTF("ABORT");
+            //out2.writeUTF("ABORT");
 
             response = in.readUTF();
-            response2 = in2.readUTF();
+           // response2 = in2.readUTF();
 
-            if (response.equals("VOTE_ABORT") || response2.equals("VOTE_ABORT")){
+            if (response.equals("VOTE_ABORT")){ //|| response2.equals("VOTE_ABORT")){
                 out.writeUTF("GLOBAL_ABORT");
-                out2.writeUTF("GLOBAL_ABORT");
+               // out2.writeUTF("GLOBAL_ABORT");
 
-                System.out.println("Se abortó la replicación");
+                System.out.println("Se Abortó la Replicación");
             }
         }else if (action.equals("AZAR")){
             out.writeUTF("AZAR");
-            out2.writeUTF("AZAR");
+            //out2.writeUTF("AZAR");
 
             response = in.readUTF();
-            response2 = in2.readUTF();
+            //response2 = in2.readUTF();
 
-            if (response.equals("VOTE_COMMIT") && response2.equals("VOTE_COMMIT")){
+            if (response.equals("VOTE_COMMIT")){ //&& response2.equals("VOTE_COMMIT")){
                 out.writeUTF("GLOBAL_COMMIT");
-                out2.writeUTF("GLOBAL_COMMIT");
+                //out2.writeUTF("GLOBAL_COMMIT");
 
-                System.out.println("Inicia la restauracion");
+                System.out.println("Inicia la restauración");
                 respuesta = MetodosCoordinador.ObtenerObjetos();
 
                 out.writeUTF(respuesta);
-                out2.writeUTF(respuesta);
+                //out2.writeUTF(respuesta);
             }else {
-                System.out.println("Se aborta la replicacion");
+                out.writeUTF("GLOBAL_ABORT");
+                System.out.println("Se Abortó la Replicación");
             }
 
         }

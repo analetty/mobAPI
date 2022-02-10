@@ -23,14 +23,14 @@ public class Coordinador {
         String action;
 
         try {
-            System.out.println("¡Ha iniciaco el coordinador de Replicas!");
+            System.out.println("¡Ha Iniciado el Coordinador de Replicas!");
             servidor = new ServerSocket(SocketCRPort);
 
             while (true) {
 
                 sockTCPCR = servidor.accept();
                 System.out.println(" ");
-                System.out.println("Coordinador de Replicas ha establecido una conexión");
+                System.out.println("El Coordinador de Replicas ha Establecido una Conexión");
 
                 in = new DataInputStream(sockTCPCR.getInputStream());
                 out = new DataOutputStream(sockTCPCR.getOutputStream());
@@ -48,17 +48,24 @@ public class Coordinador {
                     }
 
                 } else if (msg.equals("REPLICAR")) {
-                    System.out.println("Esperando Acción de Replicación");
+                    System.out.println("Esperando Acción de Replicación...");
                     action = in.readUTF();
 
                     if (action.equals("COMMIT")){
+                        System.out.println("Se ha recibido la Acción: " + action);
+                        System.out.println("Enviando la petición a los Servidores de Replicas");
                         MetodosCoordinador.ReplicarObjeto(action);
-                    }else if (action.equals("ABORT")){
-                        MetodosCoordinador.ReplicarObjeto(action);
-                    }else if (action.equals("AZAR")){
+                        System.out.println("Replicacion Realizada con Éxito");
 
+                    }else if (action.equals("ABORT")){
+                        System.out.println("Se ha recibido la Acción: "+ action);
+                        MetodosCoordinador.ReplicarObjeto(action);
+                        System.out.println("Replicacion Abortada con Éxito");
+                    }else if (action.equals("AZAR")){
+                        System.out.println("Se ha recibido la Acción: "+ action);
+                        MetodosCoordinador.ReplicarObjeto(action);
                     }
-                    System.out.println("Inicio de Replicación de los Objetos");
+                    System.out.println("Fin del proceso de Replicación");
                 } else {
                     System.out.println("ACCIÓN INVALIDA");
                 }
