@@ -180,13 +180,5 @@ public class LogicaObjeto {
         }
 	}
 	
-	public void replicar() {
-		
-	}
-	
-	public void restaurar() {
-		
-	}
-	
 	
 }
