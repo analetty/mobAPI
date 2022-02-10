@@ -65,20 +65,19 @@ public class ControladorRestMOB {
 	}
 	
 	@PostMapping(value = "/replicar", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
-	public String replicar(
+    @ResponseStatus(HttpStatus.OK)
+	public void replicar(
 			 @RequestBody @Valid PeticionRestMOB datos) {
 		logica = new LogicaObjeto();
-		cliente.replicar(datos.getAccion());
-		return "Replicar";
+		cliente.comunicarCoordReplicas("REPLICAR", datos.getAccion());		
+
 	}
 	
 	@GetMapping(value = "/restaurar", produces = MediaType.APPLICATION_JSON_VALUE)
-    @ResponseStatus(HttpStatus.CREATED)
-	public String restaurar() {
+    @ResponseStatus(HttpStatus.OK)
+	public void restaurar() {
 		logica = new LogicaObjeto();
-		cliente.restaurar();
-		return "Restaurar";
+		cliente.comunicarCoordReplicas("RESTAURAR", null);
 	}
 	
 	
