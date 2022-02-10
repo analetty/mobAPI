@@ -23,7 +23,7 @@ public class ServerMain {
     	ServerSocket servidor;
 		String msg;
 		String log;
-		int port = 19876;
+		int port = 9999;
 		
 		try {
 			
