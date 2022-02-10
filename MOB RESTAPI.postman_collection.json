@@ -20,7 +20,8 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}:{{port}}/objeto",
+					"raw": "http://{{url}}:{{port}}/objeto",
+					"protocol": "http",
 					"host": [
 						"{{url}}"
 					],
@@ -92,7 +93,8 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}:{{port}}/objeto",
+					"raw": "http://{{url}}:{{port}}/objeto",
+					"protocol": "http",
 					"host": [
 						"{{url}}"
 					],
@@ -110,7 +112,8 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "{{url}}:{{port}}/objeto/ID_1643495342595--5125584312588770102",
+					"raw": "http://{{url}}:{{port}}/objeto/ID_1643495342595--5125584312588770102",
+					"protocol": "http",
 					"host": [
 						"{{url}}"
 					],
@@ -129,7 +132,8 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}:{{port}}/objeto/ID_1643494209603--154545887749887389",
+					"raw": "http://{{url}}:{{port}}/objeto/ID_1643494209603--154545887749887389",
+					"protocol": "http",
 					"host": [
 						"{{url}}"
 					],
@@ -148,12 +152,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/restaurar",
+					"raw": "http://{{url}}:{{port}}/restaurar",
 					"protocol": "http",
 					"host": [
-						"localhost"
+						"{{url}}"
 					],
-					"port": "8080",
+					"port": "{{port}}",
 					"path": [
 						"restaurar"
 					]
@@ -176,7 +180,8 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}:{{port}}/replicar",
+					"raw": "http://{{url}}:{{port}}/replicar",
+					"protocol": "http",
 					"host": [
 						"{{url}}"
 					],
