@@ -1,5 +1,6 @@
 package com.rest.mobAPI.Coordinator;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -11,19 +12,9 @@ public class Coordinador {
 
     private static DataInputStream in;
     private static DataOutputStream out;
-    static Socket sockTCPSA;
-    static Socket sockTCPSR1;
-    static Socket sockTCPSR2;
-    static Socket sockTCPCR;
-    final static int SocketSAPort = 8080;
-    final static int SocketSR1Port = 19876;
-    final static int SocketSR2Port = 19877;
-    final static int SocketCRPort = 8888;
-    static String SocketSAHost = "127.0.0.1";
-    static String SocketSR1Host = "127.0.0.1";
-    static String SocketSR2ost = "127.0.0.1";
-    static String SocketCRHost = "127.0.0.1";
 
+    static Socket sockTCPCR;
+    final static int SocketCRPort = 8888;
 
     public static void main(String[] args) throws IOException {
 
@@ -57,14 +48,24 @@ public class Coordinador {
                     }
 
                 } else if (msg.equals("REPLICAR")) {
+                    System.out.println("Esperando Acción de Replicación");
+                    action = in.readUTF();
 
+                    if (action.equals("COMMIT")){
+                        MetodosCoordinador.ReplicarObjeto(action);
+                    }else if (action.equals("ABORT")){
+                        MetodosCoordinador.ReplicarObjeto(action);
+                    }else if (action.equals("AZAR")){
+
+                    }
+                    System.out.println("Inicio de Replicación de los Objetos");
                 } else {
                     System.out.println("ACCIÓN INVALIDA");
                 }
                 sockTCPCR.close();
             }
 
-        } catch (IOException e) {
+        } catch (IOException | ParserConfigurationException e) {
             e.printStackTrace();
         }
     }
