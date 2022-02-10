@@ -24,9 +24,9 @@ public class MetodosCoordinador {
     private static DataOutputStream out2;
     static Socket sockTCPSR1;
     static Socket sockTCPSR2;
-    final static int SocketSR1Port=8888;
+    final static int SocketSR1Port=9898;
     final static int SocketSR2Port=9999;
-    static String  SocketSR1Host="172.26.236.15";
+    static String  SocketSR1Host="172.26.198.150";
     static String  SocketSR2Host="172.26.236.15";
     static String documento;
     static String response;
@@ -113,6 +113,7 @@ public class MetodosCoordinador {
                 out2.writeUTF(respuesta);
             }else {
                 out.writeUTF("GLOBAL_ABORT");
+                out2.writeUTF("GLOBAL_ABORT");
                 System.out.println("Se Abortó la Replicación");
             }
 
