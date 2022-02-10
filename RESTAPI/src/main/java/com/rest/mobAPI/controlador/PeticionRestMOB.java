@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
 
+import javax.validation.constraints.Pattern;
+
 import com.rest.mobAPI.dominio.ModeloObjeto;
 
 import lombok.AllArgsConstructor;
@@ -15,7 +17,9 @@ import lombok.NoArgsConstructor;
 @Data
 public class PeticionRestMOB {
 	
+	//TODO NOT BLANK
 	private String nombre;
+	@Pattern(regexp = "(Crear|AZAR|COMMIT|ABBORT)", message = "Debe indicar una accion")
 	private String accion;
 	
 	private String generarID() {
