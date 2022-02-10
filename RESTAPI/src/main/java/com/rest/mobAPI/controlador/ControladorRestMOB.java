@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.xml.sax.SAXException;
 
 import com.rest.mobAPI.dominio.ModeloObjeto;
+import com.rest.mobAPI.logica.ClientMOB;
 import com.rest.mobAPI.logica.LogicaObjeto;
 
 
@@ -29,6 +30,7 @@ public class ControladorRestMOB {
 	
 	LogicaObjeto logica;
 	private String id;
+	ClientMOB cliente = new ClientMOB();
 	
 	@GetMapping(value = "/objeto", produces = MediaType.APPLICATION_JSON_VALUE)
 	public String obtenerObjetos() throws Exception {
@@ -66,13 +68,16 @@ public class ControladorRestMOB {
     @ResponseStatus(HttpStatus.CREATED)
 	public String replicar(
 			 @RequestBody @Valid PeticionRestMOB datos) {
+		logica = new LogicaObjeto();
+		cliente.replicar(datos.getAccion());
 		return "Replicar";
 	}
 	
-	@PostMapping(value = "/restaurar", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/restaurar", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
-	public String restaurar(
-			 @RequestBody @Valid PeticionRestMOB datos) {
+	public String restaurar() {
+		logica = new LogicaObjeto();
+		cliente.restaurar();
 		return "Restaurar";
 	}
 	

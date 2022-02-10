@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "50b63bac-d948-4829-9102-2145f396289e",
+		"name": "MOB RESTAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear Objeto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\": \"Objeto 3\",\r\n    \"accion\": \"Crear\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/objeto",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"objeto"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Ejemplo",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"Objeto 3\",\r\n    \"accion\": \"Crear\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/objeto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"objeto"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "117"
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 04 Feb 2022 19:22:07 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": \"ID_1644002527239-6581306786800551899\",\n    \"nombre\": \"Objeto 3\",\n    \"accion\": \"Crear\",\n    \"fechaCreacion\": \"04-02-2022 15:22\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener Objetos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/objeto",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"objeto"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar objeto por id",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/objeto/ID_1643495342595--5125584312588770102",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"objeto",
+						"ID_1643495342595--5125584312588770102"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener objeto por id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/objeto/ID_1643494209603--154545887749887389",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"objeto",
+						"ID_1643494209603--154545887749887389"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Restaurar",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/restaurar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"restaurar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Replicar",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"accion\": \"COMMIT\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/replicar",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"replicar"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
