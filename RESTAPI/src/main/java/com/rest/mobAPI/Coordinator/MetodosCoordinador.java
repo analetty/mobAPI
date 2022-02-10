@@ -24,10 +24,10 @@ public class MetodosCoordinador {
     private static DataOutputStream out2;
     static Socket sockTCPSR1;
     static Socket sockTCPSR2;
-    final static int SocketSR1Port=19876;
-    final static int SocketSR2Port=19877;
-    static String  SocketSR1Host="127.0.0.1";
-    static String  SocketSR2Host="127.0.0.1";
+    final static int SocketSR1Port=8888;
+    final static int SocketSR2Port=9999;
+    static String  SocketSR1Host="172.26.236.15";
+    static String  SocketSR2Host="172.26.236.15";
     static String documento;
     static String response;
     static String response2;
@@ -58,59 +58,59 @@ public class MetodosCoordinador {
         in = new DataInputStream(sockTCPSR1.getInputStream());
         out = new DataOutputStream(sockTCPSR1.getOutputStream());
 
-        //sockTCPSR2 = new Socket(SocketSR2Host,SocketSR2Port);
-       // in2 = new DataInputStream(sockTCPSR2.getInputStream());
-       // out2 = new DataOutputStream(sockTCPSR2.getOutputStream());
+        sockTCPSR2 = new Socket(SocketSR2Host,SocketSR2Port);
+        in2 = new DataInputStream(sockTCPSR2.getInputStream());
+        out2 = new DataOutputStream(sockTCPSR2.getOutputStream());
 
         out.writeUTF("REPLICAR");
-        //out2.writeUTF("REPLICAR");
+        out2.writeUTF("REPLICAR");
 
         if (action.equals("COMMIT")){
             out.writeUTF("COMMIT");
-           // out2.writeUTF("COMMIT");
+            out2.writeUTF("COMMIT");
 
             response = in.readUTF();
-           // response2 = in2.readUTF();
+            response2 = in2.readUTF();
 
-                if (response.equals("VOTE_COMMIT")){ //&& response2.equals("VOTE_COMMIT")){
+                if (response.equals("VOTE_COMMIT") && response2.equals("VOTE_COMMIT")){
                     out.writeUTF("GLOBAL_COMMIT");
-                    //out2.writeUTF("GLOBAL_COMMIT");
+                    out2.writeUTF("GLOBAL_COMMIT");
 
                     respuesta = MetodosCoordinador.ObtenerObjetos();
 
                     out.writeUTF(respuesta);
-                   // out2.writeUTF(respuesta);
+                    out2.writeUTF(respuesta);
                 }
 
         }else if (action.equals("ABORT")){
             out.writeUTF("ABORT");
-            //out2.writeUTF("ABORT");
+            out2.writeUTF("ABORT");
 
             response = in.readUTF();
-           // response2 = in2.readUTF();
+            response2 = in2.readUTF();
 
-            if (response.equals("VOTE_ABORT")){ //|| response2.equals("VOTE_ABORT")){
+            if (response.equals("VOTE_ABORT") || response2.equals("VOTE_ABORT")){
                 out.writeUTF("GLOBAL_ABORT");
-               // out2.writeUTF("GLOBAL_ABORT");
+                out2.writeUTF("GLOBAL_ABORT");
 
                 System.out.println("Se Abortó la Replicación");
             }
         }else if (action.equals("AZAR")){
             out.writeUTF("AZAR");
-            //out2.writeUTF("AZAR");
+            out2.writeUTF("AZAR");
 
             response = in.readUTF();
-            //response2 = in2.readUTF();
+            response2 = in2.readUTF();
 
-            if (response.equals("VOTE_COMMIT")){ //&& response2.equals("VOTE_COMMIT")){
+            if (response.equals("VOTE_COMMIT") && response2.equals("VOTE_COMMIT")){
                 out.writeUTF("GLOBAL_COMMIT");
-                //out2.writeUTF("GLOBAL_COMMIT");
+                out2.writeUTF("GLOBAL_COMMIT");
 
                 System.out.println("Inicia la restauración");
                 respuesta = MetodosCoordinador.ObtenerObjetos();
 
                 out.writeUTF(respuesta);
-                //out2.writeUTF(respuesta);
+                out2.writeUTF(respuesta);
             }else {
                 out.writeUTF("GLOBAL_ABORT");
                 System.out.println("Se Abortó la Replicación");

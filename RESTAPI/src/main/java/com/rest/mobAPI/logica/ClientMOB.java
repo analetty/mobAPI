@@ -17,8 +17,8 @@ public class ClientMOB {
 	private static DataOutputStream out;
 	static Socket sockTCP; 
 	public String direccOrg;
-	final static int port = 4040;
-	static String host = "127.0.0.1";
+	final static int port = 8888;
+	static String host = "172.26.198.150";
 	
 	public void comunicarCoordReplicas(String accion, String modo) {
 		try {

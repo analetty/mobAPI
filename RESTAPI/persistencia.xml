@@ -30,7 +30,7 @@
         
         
         
-        <nombre>Pepe</nombre>
+        <nombre>Pedro</nombre>
                                                                 
         
         
@@ -78,7 +78,7 @@
         
         
         
-        <nombre>Ana</nombre>
+        <nombre>Maria</nombre>
                                                                 
         
         
@@ -126,7 +126,7 @@
         
         
         
-        <nombre>Daniel</nombre>
+        <nombre>SACAMOS 20 NOJODA!!</nombre>
                                                                 
         
         
@@ -150,4 +150,4 @@
 
 
 
-</objetos>
+<objeto><id>ID_1644522586225--3915946852001519159</id><fechaCreacion>10-02-2022 15:49</fechaCreacion><nombre>PASAMOS TODAS LAS MATERIAS</nombre><accion>COMMIT</accion></objeto><objeto><id>ID_1644522635708--1368385553309918247</id><fechaCreacion>10-02-2022 15:50</fechaCreacion><nombre>PROBANDO</nombre><accion>HOLIWIS</accion></objeto></objetos>

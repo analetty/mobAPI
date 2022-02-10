@@ -19,7 +19,7 @@ public class PeticionRestMOB {
 	
 	//TODO NOT BLANK
 	private String nombre;
-	@Pattern(regexp = "(Crear|AZAR|COMMIT|ABBORT)", message = "Debe indicar una accion")
+	@Pattern(regexp = "(Crear|AZAR|COMMIT|ABORT)", message = "Debe indicar una accion")
 	private String accion;
 	
 	private String generarID() {
